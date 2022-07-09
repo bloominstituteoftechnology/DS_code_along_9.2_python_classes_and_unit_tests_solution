@@ -54,5 +54,10 @@ if __name__ == "__main__":
                 uri=top_song['uri'],
                 link=top_song['external_urls']['spotify'])
 
-    print(song.open_song_app())
-    print(song.open_song_web())
+    # print(song.open_song_app())
+    # print(song.open_song_web())
+    # print(song.name)
+    # print(song.duration)
+    # print(song.explicit)
+    # print(song.popularity)
+    # print(song.track_number)
