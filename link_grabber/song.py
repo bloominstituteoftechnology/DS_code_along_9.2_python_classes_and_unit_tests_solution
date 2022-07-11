@@ -2,24 +2,34 @@ from top_50 import query_api
 
 
 class Song:
-    def __init__(self, name, duration, explicit, popularity, track_number, uri, link):
+    def __init__(self, name, duration, explicit, popularity, track_number):
         self.name = name
         self.duration = duration
         self.explicit = explicit
         self.popularity = popularity
         self.track_number = track_number
-        self.uri = uri
-        self.link = link
 
     def __repr__(self):
         return f'| {self.name} |'
 
-    def open_song_web(self):
-        print("Copy this link into your browser's address bar \n to open this song online.")
+
+class WebSong(Song):
+    def __init__(self, name, duration, explicit, popularity, track_number, link):
+        super().__init__(name, duration, explicit, popularity, track_number)
+        self.link = link
+
+    def open_song(self):
+        print("Copy link into address bar to open in browser.")
         return self.link
 
-    def open_song_app(self):
-        print("Copy this link into your browser's address bar \n to open this song in the Spotify App.")
+
+class AppSong(Song):
+    def __init__(self, name, duration, explicit, popularity, track_number, uri):
+        super().__init__(name, duration, explicit, popularity, track_number)
+        self.uri = uri
+
+    def open_song(self):
+        print("Copy URI into address bar to open in app.")
         return self.uri
 
 
@@ -46,13 +56,19 @@ if __name__ == "__main__":
     # print("popularity", top_song['popularity'])
     # print("track number", top_song['track_number'])
 
-    song = Song(name=top_song['name'],
-                duration=top_song['duration_ms'],
-                explicit=top_song['explicit'],
-                popularity=top_song['popularity'],
-                track_number=top_song['track_number'],
-                uri=top_song['uri'],
-                link=top_song['external_urls']['spotify'])
+    web_song = WebSong(name=top_song['name'],
+                       duration=top_song['duration_ms'],
+                       explicit=top_song['explicit'],
+                       popularity=top_song['popularity'],
+                       track_number=top_song['track_number'],
+                       link=top_song['external_urls']['spotify'])
+
+    app_song = AppSong(name=top_song['name'],
+                       duration=top_song['duration_ms'],
+                       explicit=top_song['explicit'],
+                       popularity=top_song['popularity'],
+                       track_number=top_song['track_number'],
+                       uri=top_song['uri'])
 
     # print(song.open_song_app())
     # print(song.open_song_web())
@@ -61,3 +77,10 @@ if __name__ == "__main__":
     # print(song.explicit)
     # print(song.popularity)
     # print(song.track_number)
+
+    # print(app_song.open_song())
+
+    # print(web_song.open_song())
+
+    # repr gets inherited
+    # print(app_song)
