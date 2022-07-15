@@ -1,4 +1,4 @@
-# Code-Along 9.2 - Python Classes and Unit Tests (SOLUTION)
+# Code-Along 9.2 - Python Classes and Unit Tests Starter
 
 ## Requirements
 
