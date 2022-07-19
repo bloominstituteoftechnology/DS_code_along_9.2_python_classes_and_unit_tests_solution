@@ -41,4 +41,6 @@ Make sure that you close down your virtual environment, and command line applica
 
 3. Run the main file as a script:
 
-`python song.py`
+`cd media_grabber`
+
+`python media.py`
